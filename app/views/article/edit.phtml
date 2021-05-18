@@ -1,0 +1,30 @@
+<div class="container">
+  <h3> Editar un Articulo</h3>
+
+  <p><?=$this->flashSession->output() ?></p>
+  <?= $this->tag->form("article/edit/submit") ?>
+
+  <p>
+    <label for="nameArticle">Nombre del Articulo</label>
+    <?php echo $form->render('nameArticle'); ?>
+  </p>
+
+  <p>
+    <label for="descriptionArticle">Description del Articulo</label>
+    <?php echo $form->render('descriptionArticle'); ?>
+  </p>
+
+  <p>
+    <label for="Type">Tipo de Articulo</label>
+    <?php echo $form->render('id_type'); ?>
+  </p>
+
+
+  
+  <p><?php echo $form->render('id'); ?></p>
+  <p>
+    <?php echo $form->render('Enviar'); ?>
+  </p>
+
+  <?= $this->tag->endForm() ?>
+</div> 

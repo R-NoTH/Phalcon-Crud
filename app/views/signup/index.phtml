@@ -1,0 +1,32 @@
+<h1>estamos en la carpeta sigup si claro que siiiiii</h1>
+<br>
+<h2>Sign up using this form</h2>
+<p><?php $this->flashSession->output() ?></p>
+
+<?php echo $this->tag->form("signup/register"); ?>
+
+<p>
+    <label for="name">Name</label>
+    <?php echo $form->render('name'); ?>
+</p>
+
+<p>
+    <label for="email">E-Mail</label>
+    <?php echo $form->render('email'); ?>
+</p>
+
+<p>
+    <label for="email">Password</label>
+    <?php echo $form->render('password'); ?>
+</p>
+
+<p>
+    <label for="email">Confirm Password</label>
+    <?php echo $form->render('password_confirm'); ?>
+</p>
+
+<p>
+    <?php echo $form->render('Enviar'); ?>
+</p>
+
+</form>
