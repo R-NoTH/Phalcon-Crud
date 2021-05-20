@@ -1,0 +1,16 @@
+<div class="container">
+<br>
+  <div class="card text-center">
+    <div class="card-header">
+      Welcome
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Hellow , <?= $this->session->get('AUTH_NAME')  ?></h5>
+      <p class="card-text">You E-mail is . <?= $this->session->get('AUTH_EMAIL')  ?></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+      2 days ago
+    </div>
+  </div>
+</div>

@@ -44,6 +44,12 @@ class SignupController extends ControllerBase
         // Chech request
         if ($this->request->isPost()) {
             // Access POST data
+            
+            echo 
+            $setUpdated=setUpdated(time());
+            die;
+
+
             $name = $request->getPost('name');
             $email = $request->getPost('email');
             $password = $security->hash($_POST['password']);
@@ -51,6 +57,10 @@ class SignupController extends ControllerBase
             $user->name = $name;
             $user->email = $email;
             $user->password = $password;
+            $user->active = 1;
+            $user->password = setCreated(time());
+            $user->password = setUpdated(time());
+
 
             $result = $user->save();
 
@@ -65,13 +75,6 @@ class SignupController extends ControllerBase
             // );
             //********** */**********
         }
-        // Check whether the request was made with method POST
-        // if ($request->isPost()) {
-        //     // Check whether the request was made with Ajax
-        //     if ($request->isAjax()) {
-        //         echo 'Request was made using POST and AJAX';
-        //     }
-        // }
         if ($result) {
             // $this->flash->success('Your information was stored correctly!');
             $this->flashSession->success('Gracias Por Registrarse!');

@@ -48,6 +48,15 @@ try {
             return $flash;
         }
     );
+    //start the session the first time when some component request the session service
+    $di->setShared('session', function(){
+            $session = new Session();
+            $session->start();
+
+            return $session;
+        }
+    );
+
     /**
      * Handle routes
      */

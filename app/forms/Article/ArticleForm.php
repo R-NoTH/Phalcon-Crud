@@ -21,7 +21,7 @@ use Phalcon\Validation\Validator\Uniqueness;
 
 class ArticleForm extends Form
 {
-  public function initialize($entity = null, array $options = [])
+  public function initialize()
   {
     if (isset($options['edit'])) {
       $id = new Hidden('id',[

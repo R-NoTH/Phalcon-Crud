@@ -1,0 +1,5 @@
+crea un modelo con metodo set y get:
+phalcon model --name users --mapcolumn --get-set
+
+creacion de controllers:
+phalcon controller name 

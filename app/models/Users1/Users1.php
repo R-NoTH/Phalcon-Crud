@@ -2,6 +2,8 @@
 
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Email as EmailValidator;
+use Phalcon\Validation\Validator\Uniqueness;
+
 
 class Users extends \Phalcon\Mvc\Model
 {
@@ -29,24 +31,6 @@ class Users extends \Phalcon\Mvc\Model
      * @var string
      */
     protected $password;
-
-    /**
-     *
-     * @var integer
-     */
-    protected $active;
-
-    /**
-     *
-     * @var string
-     */
-    protected $created;
-
-    /**
-     *
-     * @var string
-     */
-    protected $updated;
 
     /**
      * Method to set the value of field id
@@ -101,45 +85,6 @@ class Users extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field active
-     *
-     * @param integer $active
-     * @return $this
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-
-        return $this;
-    }
-
-    /**
-     * Method to set the value of field created
-     *
-     * @param string $created
-     * @return $this
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Method to set the value of field updated
-     *
-     * @param string $updated
-     * @return $this
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-
-        return $this;
-    }
-
-    /**
      * Returns the value of field id
      *
      * @return integer
@@ -180,36 +125,6 @@ class Users extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Returns the value of field active
-     *
-     * @return integer
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
-
-    /**
-     * Returns the value of field created
-     *
-     * @return string
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Returns the value of field updated
-     *
-     * @return string
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-
-    /**
      * Validations and business logic
      *
      * @return boolean
@@ -227,7 +142,16 @@ class Users extends \Phalcon\Mvc\Model
                 ]
             )
         );
-
+        $validator->add(
+            'email',
+            new Uniqueness(
+                [
+                    'model'   => $this,
+                    'message' => 'Another user with same email already exists',
+                    'cancelOnFail' => true,
+                ]
+            )
+        );
         return $this->validate($validator);
     }
 
@@ -284,10 +208,7 @@ class Users extends \Phalcon\Mvc\Model
             'id' => 'id',
             'name' => 'name',
             'email' => 'email',
-            'password' => 'password',
-            'active' => 'active',
-            'created' => 'created',
-            'updated' => 'updated'
+            'password' => 'password'
         ];
     }
 
